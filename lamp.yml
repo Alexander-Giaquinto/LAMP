@@ -5,4 +5,4 @@
   tasks:
   - name: Install LAMP Packages
     apt: name={{ item }} update_cache=yes state=latest
-    loop: [ 'mysql-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php' ]
+    loop: [ 'mariadb-server', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php' ]
