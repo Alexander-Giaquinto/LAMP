@@ -10,12 +10,12 @@
         dest: "/etc/apache2/sites-available/maintenance.conf"
       notify: Reload Apache
 
-    - name: Enable Laravel VHost 
-      shell: /usr/sbin/a2ensite maintenance.conf
-      notify: Reload Apache
+    #- name: Enable Laravel VHost 
+     # shell: /usr/sbin/a2ensite maintenance.conf
+     # notify: Reload Apache
 
-  handlers:
-    - name: Reload Apache
-      service:
-        name: apache2
-        state: reloaded
+ # handlers:
+   # - name: Reload Apache
+    #  service:
+      #  name: apache2
+      #  state: reloaded
