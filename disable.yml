@@ -6,5 +6,5 @@
   tasks:
     - name: Disable Maintenance Mode By Rm File
       file:
-        path: "/var/www/html/maintenance.txt"
+        path: "/var/www/html/maintenance.enable"
         state: absent
