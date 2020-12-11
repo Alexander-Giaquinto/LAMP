@@ -1,0 +1,10 @@
+---
+- hosts: 192.168.122.248
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Enable Maintenance Mode By Touching File
+      file: 
+        path: "/var/www/html/maintenance.txt"
+        state: touch
