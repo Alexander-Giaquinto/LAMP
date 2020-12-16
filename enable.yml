@@ -6,5 +6,5 @@
   tasks:
     - name: Enable Maintenance Mode By Touching File
       file: 
-        path: "/var/www/html/maintenance.enable"
+        path: "/etc/ansible/maintenance.enable"
         state: touch
