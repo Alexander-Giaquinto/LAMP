@@ -1,8 +1,0 @@
----
-- hosts: 192.168.122.248
-  become: true
-  become_user: root
-
-  tasks: 
-    - name: Disable Maintenance Mode
-      script: disable_maintenance_mode.sh
