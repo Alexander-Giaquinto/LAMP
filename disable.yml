@@ -1,6 +1,5 @@
----
+ ---
 - hosts: 192.168.122.110
-  become: true
   become_user: root
 
   tasks:
@@ -8,3 +7,10 @@
       file:
         path: "/var/www/html/awx/public/maintenance.enable"
         state: absent
+---
+2
+- hosts: 192.168.122.110
+3
+  become: true
+4
+  become_user: root
