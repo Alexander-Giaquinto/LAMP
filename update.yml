@@ -4,7 +4,10 @@
   become: yes
   
   tasks:
-    - name: full system upgrade
-      pacman:
+    - name: Update System
+      apt:
+        name: "*"
+        state: latest
         update_cache: yes
-        upgrade: yes
+        force_apt_get: yes
+        
