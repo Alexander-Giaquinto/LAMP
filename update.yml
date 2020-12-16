@@ -1,5 +1,5 @@
 ---
-  hosts: 192.168.122.110
+- hosts: 192.168.122.110
   become_user: root
   become: yes
   
