@@ -1,10 +1,10 @@
 ---
-- hosts: 192.168.122.248
+- hosts: 192.168.122.110
   become: true
   become_user: root
 
   tasks:
     - name: Disable Maintenance Mode By Rm File
       file:
-        path: "/var/www/html/maintenance.enable"
+        path: "/var/www/html/awx/public/maintenance.enable"
         state: absent
