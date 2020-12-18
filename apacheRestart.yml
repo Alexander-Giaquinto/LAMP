@@ -2,11 +2,22 @@
 - hosts: 192.168.122.173
   become_user: root
   tasks:
-    - name: install apache2
+    - name: Install apache2
       become: yes
       apt: name=apache2 update_cache=yes state=latest
       notify:
         - restart apache2
+        
+    - name: Check apache2 Status
+      become: yes
+      command: systemctl status apache2
+      register: results
+      ignore_errors: no
+      
+    - name: Debug/Report Status:
+      debug:
+        var: results 
+      
 
   handlers:
     - name: restart apache2
