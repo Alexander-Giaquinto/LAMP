@@ -14,7 +14,7 @@
       register: results
       ignore_errors: no
       
-    - name: Debug/Report Status:
+    - name: Debug/Report Status
       debug:
         var: results 
       
