@@ -1,9 +1,0 @@
----
-- hosts: clients
-  become_user: root
-
-  tasks:
-    - name: Enable Maintenance Mode By Touching File
-      file: 
-        path: "/var/www/html/awx/public/maintenance.enable"
-        state: touch
