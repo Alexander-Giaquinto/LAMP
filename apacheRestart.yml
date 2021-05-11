@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.122.173 192.168.122.158
+- hosts: 192.168.122.173
   become_user: root
   tasks:
     - name: Install apache2
