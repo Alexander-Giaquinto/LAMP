@@ -1,7 +1,7 @@
 ---
 - hosts: 192.168.122.148
+  become_user: root
 - name: Laravel Installation (Front & Back End)
-  remote_user: root
  
   tasks: 
     - name: Install Apache
