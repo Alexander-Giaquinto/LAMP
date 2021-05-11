@@ -1,0 +1,71 @@
+---
+- hosts: IP Address/Group
+- name: AWX Installation 
+  become_user: root
+ 
+  tasks: 
+    - name: Install Docker
+      become: yes
+      apt: name=docker.io state=latest update_cache=yes
+
+    - name: Start Docker
+      become: yes 
+      ansible.builtin.command: sudo systemctl enable docker
+
+    - name: Install Dependencies 
+      become: yes 
+      apt: 
+       name: '{{packages}}'
+       state: latest
+       update_cache: yes 
+      vars: 
+        packages:
+          - curl
+          - nodejs
+          - npm 
+          - python3-pip
+          - git 
+          - pwgen
+          - vim
+          - unzip 
+
+    - name: Curl Docker-Compose 
+      become: yes 
+      ansible.builtin.command: curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    
+    - name: Add Ansible Apt Key 
+      become: yes 
+      apt_key: 
+        keyserver: keyserver.ubuntu.com 
+        id: 93C4A3FD7BB9C367
+
+    - name: Add Ansible Repository 
+      become: yes 
+      apt_repository: 
+        repo: deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main 
+        state: present 
+        update_cache: yes 
+
+    - name: Install Ansible 
+      become: yes 
+      apt: name=ansible state=latest update_cache=yes  
+
+    - name: Install NPM Global 
+      become: yes 
+      npm: 
+        global: yes 
+        name: npm 
+        state: latest
+
+    - name: Install Docker-Compose Pip Module
+      become: yes 
+      pip:
+        name: docker-compose==1.23.1
+
+    - name: Wget AWX Repo
+      become: yes 
+      ansible.builtin.command: wget https://github.com/ansible/awx/archive/refs/tags/17.1.0.zip
+    
+    - name: Unzip AWX File
+      become: yes 
+      ansible.builtin.command unzip 17.1.0.zip
