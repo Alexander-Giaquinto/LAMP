@@ -1,0 +1,10 @@
+---
+- hosts: 192.168.122.222 192.168.122.110 192.168.122.173 192.168.122.81
+  become_user: root
+
+  tasks:
+  - name: Print out System Specs
+    ansible.builtin.command: uname -a
+    register: uname
+  - debug: 
+      var: uname.stdout  
