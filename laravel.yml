@@ -1,5 +1,5 @@
 ---
-- hosts: IP Address/Group
+- hosts: 192.168.122.148
 - name: Laravel Installation (Front & Back End)
   remote_user: root
  
