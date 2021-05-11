@@ -1,5 +1,5 @@
 ---
-- hosts: IP Address/Group
+- hosts: 192.168.122.32
 - name: AWX Installation 
   become_user: root
  
