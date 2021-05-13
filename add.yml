@@ -1,0 +1,42 @@
+---
+- hosts: 192.168.122.81
+  become_user: root
+
+  tasks:
+  - name: Create user group
+    become: yes
+    group:
+      name: CueProject
+      gid: 2010
+      state: present
+
+  - name: Add user Josh
+    become: yes
+    user:
+      name: Josh
+      uid: 0505
+      group: CueProject
+
+  - name: Add user Gio
+     become: yes
+     user:
+       name: Gio
+       group: CueProject
+
+  - name: Add user Mike
+    become: yes
+    user:
+      name: Mike
+      group: CueProject
+
+  - name: Add user Sam
+    become: yes
+    user:
+      name: Sam
+      group: CueProject
+
+  - name: Add user Isaiah
+    become: yes
+    user:
+      name: Isaiah
+      group: CueProject
