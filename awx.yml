@@ -1,6 +1,5 @@
 ---
 - hosts: 192.168.122.32
-- name: AWX Installation 
   become_user: root
  
   tasks: 
@@ -28,6 +27,7 @@
           - pwgen
           - vim
           - unzip 
+          - python-pip
 
     - name: Curl Docker-Compose 
       become: yes 
@@ -57,8 +57,7 @@
         name: npm 
         state: latest
 
-    - name: Install Docker-Compose Pip Module
-      become: yes 
+    - name: Install Docker-Compose Pip Module 
       pip:
         name: docker-compose==1.23.1
 
@@ -68,4 +67,8 @@
     
     - name: Unzip AWX File
       become: yes 
-      ansible.builtin.command unzip 17.1.0.zip
+      ansible.builtin.command: unzip 17.1.0.zip
+
+    - name: Remove Zip File
+      become: yes 
+      ansible.builtin.command: rm 17.1.0.zip
