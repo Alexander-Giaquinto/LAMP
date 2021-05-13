@@ -1,9 +1,12 @@
 ---
-- hosts: 192.168.122.81
+- hosts: all
+ 
   become: yes
  
   vars:
     ansible_sudo_pass: "{{'password'}}"
    
   tasks:
-    - actions: ping
+    - name: Ping Host
+      become: yes 
+      ansible.builtin.command: ansible -i hosts -m ping 192.168.122.81
