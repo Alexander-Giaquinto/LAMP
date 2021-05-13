@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.1.130
+- hosts: 192.168.122.81
   become: true
 
   tasks:
@@ -8,4 +8,4 @@
         name: "*"
         state: latest
         update_cache: yes
-        update_cache_retries: 2
+        
