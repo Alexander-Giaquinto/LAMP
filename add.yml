@@ -18,10 +18,10 @@
       group: CueProject
 
   - name: Add user Gio
-     become: yes
-     user:
-       name: Gio
-       group: CueProject
+    become: yes
+    user:
+      name: Gio
+      group: CueProject
 
   - name: Add user Mike
     become: yes
@@ -40,3 +40,87 @@
     user:
       name: Isaiah
       group: CueProject
+---
+2
+- hosts: 192.168.122.81
+3
+  become_user: root
+4
+​
+5
+  tasks:
+6
+  - name: Create user group
+7
+    become: yes
+8
+    group:
+9
+      name: CueProject
+10
+      gid: 2010
+11
+      state: present
+12
+​
+13
+  - name: Add user Josh
+14
+    become: yes
+15
+    user:
+16
+      name: Josh
+17
+      uid: 0505
+18
+      group: CueProject
+19
+​
+20
+  - name: Add user Gio
+21
+     become: yes
+22
+     user:
+23
+       name: Gio
+24
+       group: CueProject
+25
+​
+26
+  - name: Add user Mike
+27
+    become: yes
+28
+    user:
+29
+      name: Mike
+30
+      group: CueProject
+31
+​
+32
+  - name: Add user Sam
+33
+    become: yes
+34
+    user:
+35
+      name: Sam
+36
+      group: CueProject
+37
+​
+38
+  - name: Add user Isaiah
+39
+    become: yes
+40
+    user:
+41
+      name: Isaiah
+42
+      group: CueProject
+43
