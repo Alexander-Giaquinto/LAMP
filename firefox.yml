@@ -19,9 +19,9 @@
       become: yes
       ansible.builtin.command: unzip bw-linux-1.0.1.zip
 
-    - name: Install BitWarden
-      become: yes
-      npm: name=bitwarden state=latest
+    #- name: Install BitWarden
+      #become: yes
+      #npm: name=bitwarden state=latest
 
     - name: Remove BitWarden Zip File
       become: yes
