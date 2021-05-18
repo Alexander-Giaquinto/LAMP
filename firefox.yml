@@ -1,0 +1,40 @@
+---
+- hosts: 192.168.122.173
+  become_user: root
+  tasks:
+
+    - name: Install Firefox
+      become: yes
+      apt: name=firefox-esr state=latest update_cache=yes
+
+    - name: Install Ice Weasel
+      become: yes
+      apt: name=iceweasel state=latest update_cache=yes
+
+    - name: Get BitWarden
+      become: yes
+      ansible.builtin.command: wget https://github.com/bitwarden/cli/releases/download/v1.0.1/bw-linux-1.0.1.zip
+
+    - name: Unzip BitWarden
+      become: yes
+      ansible.builtin.command: unzip bw-linux-1.0.1.zip
+
+    - name: Install BitWarden
+      become: yes
+      npm: name=bitwarden state=latest
+
+    - name: Remove BitWarden Zip File
+      become: yes
+      ansible.builtin.command: rm bw-linux-1.0.1.zip
+
+    - name: Install Firefox Extensions
+      become: yes
+      apt:
+       name: '{{extensions}}'
+       state: latest
+      vars:
+        extensions:
+          - webext-ublock-origin
+          - webext-privacy-badger
+          - webext-bit-warden
+
